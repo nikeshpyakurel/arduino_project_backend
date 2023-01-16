@@ -4,12 +4,14 @@ const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const rfidRoute = require("./routes/rfid");
+const morgan = require("morgan");
+const cors = require("cors")
 
-
+// middleware
 app.use(express.json());
 app.use(bodyParser.json())
-
-
+app.use(morgan("common"));
+app.use(cors())
 
 // routes
 app.use("/api/v1/rfid", rfidRoute);
